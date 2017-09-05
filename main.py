@@ -1,4 +1,5 @@
 from room import Room
+from item import Item
 import character 
 
 kitchen = Room("Kitchen")
@@ -25,8 +26,19 @@ catrina = character.Friend("Catrina", "A friendly skeleton")
 catrina.conversation = "Why hello there."
 ballroom.character = catrina
 
+# add some items
+cheese = Item("cheese")
+cheese.set_description("A large and smelly block of cheese")
+ballroom.set_item(cheese)
 
-current_room = kitchen          
+book = Item("book")
+book.set_description("A really good book entitled 'Knitting for dummies'")
+dining_hall.set_item(book)
+
+
+
+current_room = kitchen      
+backpack = []    
 
 dead = False;
 
@@ -64,5 +76,13 @@ while dead == False:
     elif command == 'quit':
         print ("You give up and go home.  The End")
         quit();
+    elif command == "take":
+        item = current_room.get_item()
+        if item is not None:
+            print("You put the " + item.name + " in your backpack")
+            backpack.append(item.name)
+            current_room.set_item(None)
+        else:
+            print("There's nothing here to take!")
     else:
         print ("Sorry, I don't know how to " + command)
