@@ -1,5 +1,5 @@
 from room import Room
-
+import character 
 
 kitchen = Room("Kitchen")
 kitchen.description = "A dank and dirty room buzzing with flies."
@@ -15,23 +15,20 @@ dining_hall.link_room(ball_room, "west")
 dining_hall.link_room(kitchen, "north")
 ball_room.link_room(dining_hall, "east")
 
+dave = character.Enemy("Dave", "A smelly zombie")
+dave.conversation = "Hnnnng! Hnnnngry.. Brrlgrh... rgrhl... brains..."
+dave.weakness = "cheese"
+
+dining_hall.character = dave
+
 current_room = kitchen          
-
-from character import Character
-
-dave = Character("Dave", "A smelly zombie")
-
-dave.describe()
-
-# Add some conversation for Dave when he is talked to
-dave.set_conversation("What's up, dude!")
-
-# Trigger a conversation with Dave
-dave.talk()
-
 
 while True:     
     print("\n")         
     current_room.get_details()         
+
+    if current_room.character != None:
+        current_room.character.describe()
+
     command = input("> ")    
     current_room = current_room.move(command)  
