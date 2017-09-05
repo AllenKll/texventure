@@ -2,6 +2,7 @@ class Room():
     def __init__(self, name):
         self._name = name
         self._description = None
+        self.linked_rooms = {}
 
     # One way to use Property
     def set_description(self, text):
