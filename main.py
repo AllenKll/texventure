@@ -67,7 +67,10 @@ while dead == False:
         if inhabitant:
             print("What will you fight with?")
             weapon = input()
-            dead = not inhabitant.fight(weapon)
+            if weapon in backpack:
+                dead = not inhabitant.fight(weapon)
+            else:
+                print("You don't have a " + weapon)
         else:
             print ("You swing wildly about and fall flat on your face. ")
     elif command == 'hug':
