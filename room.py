@@ -21,5 +21,9 @@ class Room():
     def name(self, text):
         self._name = text
 
+    # describe function
     def describe(self): 
         print( self.description )
+
+    def link_room(self, room_to_link, direction):
+        self.linked_rooms[direction] = room_to_link
