@@ -16,15 +16,20 @@ dining_hall.link_room(ballroom, "west")
 dining_hall.link_room(kitchen, "north")
 ballroom.link_room(dining_hall, "east")
 
+#add characters
 dave = character.Enemy("Dave", "A smelly zombie")
 dave.conversation = "Hnnnng! Hnnnngry.. Brrlgrh... rgrhl... brains..."
 dave.weakness = "cheese"
 dining_hall.character = dave
 
-# Add a new character
 catrina = character.Friend("Catrina", "A friendly skeleton")
 catrina.conversation = "Why hello there."
-ballroom.character = catrina
+kitchen.character = catrina
+
+tabitha = character.Enemy("Tabitha", "An enormous spider with countless eyes and furry legs.")
+tabitha.conversation = "Sssss....I'm so bored..."
+tabitha.weakness = "book"
+ballroom.character = tabitha
 
 # add some items
 cheese = Item("cheese")
