@@ -23,12 +23,33 @@ dining_hall.character = dave
 
 current_room = kitchen          
 
-while True:     
+dead = False;
+
+while dead == False:     
     print("\n")         
     current_room.get_details()         
 
-    if current_room.character != None:
-        current_room.character.describe()
+    inhabitant = current_room.character
+    if inhabitant != None:
+        inhabitant.describe()
 
     command = input("> ")    
-    current_room = current_room.move(command)  
+    if command in ['north', 'south', 'east','west']:
+        current_room = current_room.move(command)  
+    elif command == 'talk':
+        if inhabitant:
+            inhabitant.talk()
+        else:
+            print ("You shout at the night... no one answers.")
+    elif command == 'fight':
+        if inhabitant:
+            print("What will you fight with?")
+            weapon = input()
+            dead = not inhabitant.fight(weapon)
+        else:
+            print ("You swing wildly about and fall flat on your face. ")
+    elif command == 'quit':
+        print ("You give up and go home.  The End")
+        quit();
+    else:
+        print ("Sorry, I don't know how to " + command)
