@@ -69,6 +69,9 @@ while dead == False:
             weapon = input()
             if weapon in backpack:
                 dead = not inhabitant.fight(weapon)
+                current_room.character = None;
+                if not dead:
+                    print(inhabitant.name + " retreats into the darkness.");
             else:
                 print("You don't have a " + weapon)
         else:
